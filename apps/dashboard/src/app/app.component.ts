@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '@mdv-twenty-one/core-data';
 
 @Component({
   selector: 'mdv-twenty-one-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'dashboard';
+
+  links = [
+    { path: '/dogs', icon: 'work', title: 'dogs' }
+  ]
+
+  userIsAuthenticated = this.authService.isAuthenticated;
+  constructor(private authService: AuthService) {}
 }

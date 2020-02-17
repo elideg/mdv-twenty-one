@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title *ngIf="currentDog.id; else elseCreateNew"><h1>{{ originalName }}</h1></mat-card-title>
+    <ng-template #elseCreateNew><h1 class="border-bottom">Create a New Dog</h1></ng-template>
+  </mat-card-header>
+  <form [formGroup]="form" #formDirective="ngForm" (ngSubmit)="saveForm(formDirective)">
+    <mat-card-content>
+
+      <mat-form-field class="full-width d-flex">
+        <input matInput placeholder="Name" type="text" name="name" formControlName="name">
+        <mat-error *ngIf="form.get('name').hasError('required')">Required Field</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width d-flex">
+        <textarea matInput placeholder="Temperament" type="text" name="temperament" formControlName="temperament"></textarea>
+        <mat-error *ngIf="form.get('temperament').hasError('required')">Required Field</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="full-width d-flex">
+        <textarea matInput placeholder="Life Span" type="text" name="life_span" formControlName="life_span"></textarea>
+        <mat-error *ngIf="form.get('life_span').hasError('required')">Required Field</mat-error>
+      </mat-form-field>
+
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">{{ currentDog.id ? 'Update' : 'Create' }}</button>
+      <button type="button" mat-button (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

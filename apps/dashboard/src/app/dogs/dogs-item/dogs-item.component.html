@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-center mt-3">
+  <button mat-button [routerLink]="['/dogs']">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <mat-card class="col-6" *ngIf="dogs$ | async as dog">
+    <mat-card-header class="align-self-center">
+      <mat-card-title>
+        <h3 mat-line>Dog Id</h3>
+        <p>{{dog.id}}</p>
+        <h3 mat-line>Dog Name</h3>
+        <p>{{dog.name}}</p>
+        <h3 mat-line>Dog Life Span</h3>
+        <p>{{dog.life_span}}</p>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</div>
